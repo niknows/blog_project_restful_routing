@@ -22,9 +22,19 @@ var Blog = mongoose.model("Blog",blogSchema);
 
 //RESTFUL ROUTES
 app.get("/blogs",function(req,res){
-   res.render("index"); 
+   Blog.find({},function(err,blogs){
+       if(err){
+           console.log("Something went wrong...");
+       }else{
+           res.render("index",{blogs:blogs}); 
+       }
+   });
+   
 });
 
+app.get("/",function(req,res){
+   app.redirect("/blogs"); 
+});
 // 
 
 /*SERVER*/
