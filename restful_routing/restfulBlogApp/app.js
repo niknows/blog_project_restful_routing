@@ -33,7 +33,7 @@ app.get("/blogs",function(req,res){
 });
 
 app.get("/",function(req,res){
-   app.redirect("/blogs"); 
+   res.redirect("/blogs"); 
 });
 // 
 
