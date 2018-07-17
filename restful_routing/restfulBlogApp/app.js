@@ -31,9 +31,15 @@ app.get("/blogs",function(req,res){
    });
    
 });
-
 app.get("/",function(req,res){
    res.redirect("/blogs"); 
+});
+
+app.get("/blogs/new",function(req,res){
+    res.render("form");
+});
+app.post("/blogs",function(req,res){
+   console.log("Someone requested the post route..."); 
 });
 // 
 
