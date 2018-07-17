@@ -2,10 +2,13 @@
 <div class="ui container">
 <% blogs.forEach(function(blog){ %>
 <h2><%= blog.title %></h2>
+<cite><%= blog.created.toDateString() %></cite>
 <img class="large ui image" src="<%= blog.image %>">
-<p><%= blog.body %></p>
+<p>
+    <%- blog.body.substring(0,100)%>
+    ...
+</p>
 <a href="/blogs/<%= blog._id %>">Read More!</a>
-<cite><%= blog.created %></cite>
 <% }); %>
 </div>
 <% include partials/footer %>
