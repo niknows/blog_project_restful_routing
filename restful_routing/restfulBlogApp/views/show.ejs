@@ -1,0 +1,10 @@
+<% include partials/header %>
+ <div class="ui main text container segment">
+     <div class="ui huge header">
+         <%= blog.title %>
+     </div>
+     <img class="large ui image" src="<%= blog.image %>">
+     <p><%= blog.body %></p>
+     <button class="ui primary button" href="/">Back</button>
+ </div>
+ <% include partials/footer %>

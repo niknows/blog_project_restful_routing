@@ -38,8 +38,25 @@ app.get("/",function(req,res){
 app.get("/blogs/new",function(req,res){
     res.render("form");
 });
+app.get("/blogs/:id",function(req,res){
+   Blog.findById(req.params.id,function(err,foundBlog){
+       if(err){
+           res.redirect("/blogs");
+       }else {
+         res.render("show",{blog: foundBlog});  
+       }
+   });
+   
+});
 app.post("/blogs",function(req,res){
-   console.log("Someone requested the post route..."); 
+   Blog.create(req.body.blog,function(err,newBlog){
+       if(err){
+           res.render("new");
+       }else {
+           console.log(newBlog + "was added to the database!");
+           res.redirect("/blogs");
+       }
+   });
 });
 // 
 

@@ -4,6 +4,7 @@
 <h2><%= blog.title %></h2>
 <img class="large ui image" src="<%= blog.image %>">
 <p><%= blog.body %></p>
+<a href="/blogs/<%= blog._id %>">Read More!</a>
 <cite><%= blog.created %></cite>
 <% }); %>
 </div>
