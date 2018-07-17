@@ -3,8 +3,17 @@
      <div class="ui huge header">
          <%= blog.title %>
      </div>
-     <img class="large ui image" src="<%= blog.image %>">
-     <p><%= blog.body %></p>
-     <button class="ui primary button" href="/">Back</button>
+     <div class="ui top attached">
+      <div class="item">
+        <img class="large ui centered rounded image" src="<%= blog.image %>">
+        <div class="content">
+          <span><%= blog.created.toDateString() %></span>
+        </div>
+        <div class="description">
+          <p><%- blog.body %></p>
+        </div>
+      </div>
+     </div>
+     <button class="ui primary button" onclick="location.href='/blogs'">Back</button>
  </div>
  <% include partials/footer %>
