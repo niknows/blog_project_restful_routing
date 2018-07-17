@@ -1,14 +1,16 @@
 /*BASIC SETUP*/
-var express     = require("express");
-var mongoose    = require("mongoose");
-var bodyParser  = require("body-parser");
-var app         = express();
+var express          = require("express");
+var methodOverride   = require("method-override");
+var mongoose         = require("mongoose");
+var bodyParser       = require("body-parser");
+var app              = express();
 
 /*CONNECTING PACKAGES*/
 mongoose.connect("mongodb://localhost:27017/restful_blog_app",{useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(methodOverride("_method"));
 
 
 //MANGOOSE SCHEMA/MODEL
@@ -72,6 +74,16 @@ app.get("/blogs/:id/edit",function(req,res){
 });
 
 //UPDATE ROUTE 
+app.put("/blogs/:id", function(req,res){
+    Blog.findByIdAndUpdate(req.params.id,req.body.blog, function(err,updatedBlog){
+        if(err){
+            res.redirect("/blogs");
+        }else{
+            res.redirect("/blogs/" + req.params.id);
+        }
+    } );
+    res.send("UPDATE ROUTE!");
+});
 
 /*SERVER*/
 app.listen(process.env.PORT, process.env.IP, function(){
