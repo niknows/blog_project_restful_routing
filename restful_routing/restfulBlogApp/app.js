@@ -82,7 +82,6 @@ app.put("/blogs/:id", function(req,res){
             res.redirect("/blogs/" + req.params.id);
         }
     } );
-    res.send("UPDATE ROUTE!");
 });
 
 /*SERVER*/
