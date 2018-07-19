@@ -7,6 +7,10 @@ i.icon{
     font-size: 2em;
 }
 
+/*INDEX PAGE*/
+.ui.items > .item .extra{
+    margin: 0;
+}
 /*SHOW PAGE*/
 
 /*buttons*/
