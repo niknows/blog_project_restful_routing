@@ -8,7 +8,12 @@ i.icon{
 }
 
 /*INDEX PAGE*/
-.ui.items > .item .extra{
+/*icon*/
+.chevron.right{
+    font-size: 1.2em;
+}
+
+.ui.items > .item .meta{
     margin: 0;
 }
 /*SHOW PAGE*/

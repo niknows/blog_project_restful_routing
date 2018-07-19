@@ -10,19 +10,17 @@
                       <img class="large ui image" src="<%= blog.image %>">  
                     </div>
                     <div class="content">
-                      <h2 class="header"><%= blog.title %></h2>  
-                      <div class="extra">
-                          <%= blog.created.toDateString() %>
+                      <a href="/blogs/<%= blog._id %>" class="header"><%= blog.title %></a>  
+                      <div class="meta">
+                          <span><%= blog.created.toDateString() %></span>
                       </div>
                       <div class="description">
-                         <p>
-                             
-                          <%- blog.body.substring(0,100)%>
-        ...
-                        </p> 
+                         <p><%- blog.body.substring(0,100)%>...</p> 
                       </div>
-                      <div class="description">
-                          <a href="/blogs/<%= blog._id %>">Read More!</a>
+                       <div class="extra">
+                         <a class="ui floated basic red button"href="/blogs/<%= blog._id %>">Read More!
+                            <i class="chevron right icon"></i>
+                         </a>
                       </div>
                     </div>
                 </div>
