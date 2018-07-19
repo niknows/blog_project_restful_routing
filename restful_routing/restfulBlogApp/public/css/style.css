@@ -1,10 +1,19 @@
 body{
     margin-top: 7em;
 }
+
+/*NAVBAR*/
 i.icon{
     font-size: 2em;
 }
 
+/*SHOW PAGE*/
 #button-form{
     display: inline;
+}
+.description p:last-of-type{
+    margin-bottom: 2em;
+}
+#back{
+    float: right;
 }
