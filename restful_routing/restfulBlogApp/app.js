@@ -1,9 +1,11 @@
 /*BASIC SETUP*/
-var express          = require("express");
-var methodOverride   = require("method-override");
-var mongoose         = require("mongoose");
-var bodyParser       = require("body-parser");
-var app              = express();
+var express          = require("express"),
+methodOverride       = require("method-override"),
+mongoose             = require("mongoose"),
+bodyParser           = require("body-parser"),
+expressSanitizer     = require("express-sanitizer"),
+app                  = express();
+ 
 
 /*CONNECTING PACKAGES*/
 mongoose.connect("mongodb://localhost:27017/restful_blog_app",{useNewUrlParser: true});
@@ -11,6 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
+app.use(expressSanitizer());
 
 
 //MANGOOSE SCHEMA/MODEL
@@ -37,9 +40,12 @@ app.get("/",function(req,res){
    res.redirect("/blogs"); 
 });
 
+//NEW ROUTE
 app.get("/blogs/new",function(req,res){
     res.render("form");
 });
+
+//SHOW ROUTE
 app.get("/blogs/:id",function(req,res){
    Blog.findById(req.params.id,function(err,foundBlog){
        if(err){
@@ -50,7 +56,12 @@ app.get("/blogs/:id",function(req,res){
    });
    
 });
+
 app.post("/blogs",function(req,res){
+   console.log(req.body);
+   req.body.blog.body = req.sanitize(req.body.blog.body);
+   console.log("==========");
+   console.log(req.body);
    Blog.create(req.body.blog,function(err,newBlog){
        if(err){
            res.render("new");
