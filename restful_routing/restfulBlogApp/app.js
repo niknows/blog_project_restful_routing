@@ -84,6 +84,11 @@ app.put("/blogs/:id", function(req,res){
     } );
 });
 
+//DELETE ROUTE
+app.delete("/blog/:id",function(req,res){
+    res.send("You have reached the destroy route");
+});
+
 /*SERVER*/
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Blog App has started...");
