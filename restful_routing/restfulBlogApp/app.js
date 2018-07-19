@@ -58,10 +58,7 @@ app.get("/blogs/:id",function(req,res){
 });
 
 app.post("/blogs",function(req,res){
-   console.log(req.body);
    req.body.blog.body = req.sanitize(req.body.blog.body);
-   console.log("==========");
-   console.log(req.body);
    Blog.create(req.body.blog,function(err,newBlog){
        if(err){
            res.render("new");
@@ -86,6 +83,7 @@ app.get("/blogs/:id/edit",function(req,res){
 
 //UPDATE ROUTE 
 app.put("/blogs/:id", function(req,res){
+    req.body.blog.body = req.sanitize(req.body.blog.body);
     Blog.findByIdAndUpdate(req.params.id,req.body.blog, function(err,updatedBlog){
         if(err){
             res.redirect("/blogs");
