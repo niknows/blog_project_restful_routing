@@ -13,11 +13,12 @@
           <p><%- blog.body %></p>
         </div>
         <a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
-        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+        <form id="button-form" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
             <button class="ui red basic button">Delete</button>
+            <button class="ui primary button" onclick="location.href='/blogs'">Back</button>
         </form>
       </div>
      </div>
-     <button class="ui primary button" onclick="location.href='/blogs'">Back</button>
+     
  </div>
  <% include partials/footer %>
