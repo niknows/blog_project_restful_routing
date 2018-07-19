@@ -8,12 +8,16 @@ i.icon{
 }
 
 /*SHOW PAGE*/
+
+/*buttons*/
 #button-form{
     display: inline;
 }
-.description p:last-of-type{
-    margin-bottom: 2em;
-}
 #back{
     float: right;
+}
+
+/*content*/
+.description p:last-of-type{
+    margin-bottom: 2em;
 }
